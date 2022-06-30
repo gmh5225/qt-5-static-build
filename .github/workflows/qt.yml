@@ -30,7 +30,7 @@ jobs:
         mkdir qt5_shadow
         cd qt5_shadow
         # Configure Qt5
-        ..\qt5\configure.bat -release -static -platform win64-g++ -prefix "..\Qt5_binaries" -no-pch -optimize-size -opengl desktop -skip webengine -nomake tools -nomake tests -nomake examples -opensource -confirm-license
+        ..\qt5\configure.bat -release -static -platform win32-g++ -prefix "..\Qt5_binaries" -no-pch -optimize-size -opengl desktop -skip webengine -nomake tools -nomake tests -nomake examples -opensource -confirm-license
         mingw32-make -j4
         mingw32-make install
     - name: Package binaries
