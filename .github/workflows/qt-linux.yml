@@ -11,11 +11,6 @@ jobs:
     runs-on: ubuntu-20.04
 
     steps:
-    - name: Install Python 3.7 version
-      uses: actions/setup-python@v1
-      with:
-        python-version: '3.7'
-        architecture: 'x64'
     - name: Compile static Qt version
       run: |
         # Install required packages
