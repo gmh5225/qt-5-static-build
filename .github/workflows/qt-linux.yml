@@ -1,0 +1,41 @@
+name: BuildLinuxQtBinaries
+
+on:
+  push:
+    branches:
+    # Change this to the branch name which you are developing on to trigger the workflow
+    - main
+
+jobs:
+  GenerateLinuxStaticBinaries:
+    runs-on: ubuntu-20.04
+
+    steps:
+    - name: Install Python 3.7 version
+      uses: actions/setup-python@v1
+      with:
+        python-version: '3.7'
+        architecture: 'x64'
+    - name: Compile static Qt version
+      run: |
+        # Clone Qt5 repo
+        cd ..
+        git clone https://code.qt.io/qt/qt5.git -b 5.15.2
+        cd qt5
+        perl init-repository -f --module-subset=qt3d,qtbase,qtcanvas3d,qtcharts,qtdeclarative,qtgraphicaleffects,qtimageformats,qtmultimedia,qtnetworkauth,qtquick3d,qtquickcontrols,qtquickcontrols2,qtserialbus,qtserialport,qtsvg,qtwebchannel,qtwebengine,qtwebsockets,qtwebview,qtwinextras,qtxmlpatterns
+        # Create shadow build folder
+        cd ..
+        mkdir qt5_shadow
+        cd qt5_shadow
+        # Configure Qt5
+        ../qt5/configure -release -static -prefix "../Qt5_binaries" -no-pch -optimize-size -opengl desktop -skip webengine -nomake tools -nomake tests -nomake examples -opensource -confirm-license
+        make -j4
+        make install
+    - name: Package binaries
+      run: |
+        # Create archive of the pre-built Qt binaries
+        7z a qt5_5152_static_binaries_linux.zip ../Qt5_binaries
+    - uses: actions/upload-artifact@v1
+      with:
+        name: qt5_5152_static_binaries_linux.zip
+        path: qt5_5152_static_binaries_linux.zip
