@@ -28,14 +28,14 @@ jobs:
         mkdir qt5_shadow
         cd qt5_shadow
         # Configure Qt5
-        ../qt5/configure -release -static -prefix "../Qt5_binaries" -no-pch -optimize-size -opengl desktop -skip webengine -nomake tools -nomake tests -nomake examples -opensource -confirm-license
+        ../qt5/configure -release -static -prefix "../Qt5_binaries" -no-dbus -no-pch -optimize-size -skip webengine -nomake tools -nomake tests -nomake examples -opensource -confirm-license
         make -j4
         make install
     - name: Package binaries
       run: |
         # Create archive of the pre-built Qt binaries
-        7z a qt5_5152_static_binaries_linux.zip ../Qt5_binaries
+        7z a qt5_5152_static_binaries_linux.7z ../Qt5_binaries
     - uses: actions/upload-artifact@v1
       with:
         name: qt5_5152_static_binaries_linux.zip
-        path: qt5_5152_static_binaries_linux.zip
+        path: qt5_5152_static_binaries_linux.7z
