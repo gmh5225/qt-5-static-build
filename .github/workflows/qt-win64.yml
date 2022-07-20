@@ -1,4 +1,4 @@
-name: BuildQtBinaries
+name: BuildWindowsQtBinaries
 
 on:
   push:
