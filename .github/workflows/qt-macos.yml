@@ -32,5 +32,5 @@ jobs:
         tar cfvz qt5_5152_static_binaries_macos.tar.gz ../Qt5_binaries
     - uses: actions/upload-artifact@v1
       with:
-        name: qt5_5152_static_binaries_macos.zip
+        name: qt5_5152_static_binaries_macos
         path: qt5_5152_static_binaries_macos.tar.gz
