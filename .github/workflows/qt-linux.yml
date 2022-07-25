@@ -14,7 +14,7 @@ jobs:
     - name: Compile static Qt version
       run: |
         # Install required packages
-        sudo apt-get install build-essential libgl1-mesa-dev libxcb-devel libxkbcommon-dev xcb-util-devel xcb-util-image-devel xcb-util-keysyms-devel xcb-util-renderutil-devel xcb-util-wm-devel
+        sudo apt-get install build-essential libgl1-mesa-dev libxcb1-dev libxkbcommon-dev xcb-util xcb-util-image xcb-util-keysyms xcb-util-renderutil xcb-util-wm
         # Clone Qt5 repo
         cd ..
         git clone https://code.qt.io/qt/qt5.git -b 5.15.2
