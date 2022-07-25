@@ -14,7 +14,7 @@ jobs:
     - name: Compile static Qt version
       run: |
         # Install required packages
-        sudo apt-get install build-essential libgl1-mesa-dev libxcb1-dev libxkbcommon-dev libxcb-util-dev libxcb-image0-dev libxcb-keysyms1-dev libxcb-render-util0-dev libxcb-icccm4-dev libxcb-ewmh-dev libxcb-xinerama0-dev
+        sudo apt-get install build-essential '^libxcb.*-dev' libx11-* libx11* libxcb-* libxcb* libx11-xcb-dev libglu1-mesa-dev libxrender-dev libxi-dev libxkbcommon-dev libxkbcommon-x11-dev libxkbcommon-devsudo
         # Clone Qt5 repo
         cd ..
         git clone https://code.qt.io/qt/qt5.git -b 5.15.2
