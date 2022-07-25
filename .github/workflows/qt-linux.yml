@@ -14,7 +14,7 @@ jobs:
     - name: Compile static Qt version
       run: |
         # Install required packages
-        sudo apt-get install build-essential libgl1-mesa-dev
+        sudo apt-get install build-essential libgl1-mesa-dev libxkbcommon-dev 
         # Clone Qt5 repo
         cd ..
         git clone https://code.qt.io/qt/qt5.git -b 5.15.2
@@ -25,7 +25,7 @@ jobs:
         mkdir qt5_shadow
         cd qt5_shadow
         # Configure Qt5
-        ../qt5/configure -release -static -prefix "../Qt5_binaries" -no-icu -no-dbus -no-pch -optimize-size -bundled-xcb-xinput -qt-libpng -qt-pcre -skip webengine -nomake tools -nomake tests -nomake examples -opensource -confirm-license
+        ../qt5/configure -release -static -prefix "../Qt5_binaries" -no-icu -no-dbus -no-pch -optimize-size -qt-xcb -bundled-xcb-xinput -qt-libpng -qt-pcre -skip webengine -nomake tools -nomake tests -nomake examples -opensource -confirm-license
         make -j4
         make install
     - name: Package binaries
