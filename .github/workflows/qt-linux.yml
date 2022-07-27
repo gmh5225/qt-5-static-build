@@ -18,7 +18,7 @@ jobs:
         # XCB support (Windowing and input handling)
         sudo apt-get install '^libxcb.*-dev' libx11-* libx11* libxcb-* libxcb* libx11-xcb-dev libglu1-mesa-dev libxrender-dev libxi-dev libxkbcommon-dev libxkbcommon-x11-dev
         # pulseaudio support
-        sudo apt-get install pulseaudio
+        sudo apt-get install libpulse-dev
         # ALSA support
         sudo apt-get install libasound2-dev libatopology-dev
         # Clone Qt5 repo
