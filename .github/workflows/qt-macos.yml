@@ -16,6 +16,7 @@ jobs:
     - name: Compile static Qt version
       run: |
         # Clone Qt5 repo
+        7z h
         cd ..
         git clone https://code.qt.io/qt/qt5.git -b 5.15.2
         cd qt5
