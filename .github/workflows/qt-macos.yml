@@ -22,12 +22,13 @@ jobs:
         git clone https://code.qt.io/qt/qt5.git -b 5.15.2
         cd qt5
         pwd
-        cat ../mac/patch/qtbase/src/plugins/platforms/cocoa/qiosurfacegraphicsbuffer.h.patch
+        cat ../qt-5-static-build/mac/patch/qtbase/src/plugins/platforms/cocoa/qiosurfacegraphicsbuffer.h.patch
+        cat ../a.txt
         perl init-repository -f --module-subset=qt3d,qtbase,qtcanvas3d,qtcharts,qtdeclarative,qtgraphicaleffects,qtimageformats,qtmultimedia,qtnetworkauth,qtquick3d,qtquickcontrols,qtquickcontrols2,qtserialbus,qtserialport,qtsvg,qtwebchannel,qtwebengine,qtwebsockets,qtwebview,qtwinextras,qtxmlpatterns
 
         # Apply patches
         # Add missing macOS header file that was indirectly included before
-        patch qtbase/src/plugins/platforms/cocoa/qiosurfacegraphicsbuffer.h ../mac/patch/qtbase/src/plugins/platforms/cocoa/qiosurfacegraphicsbuffer.h.patch
+        patch qtbase/src/plugins/platforms/cocoa/qiosurfacegraphicsbuffer.h ../qt-5-static-build/mac/patch/qtbase/src/plugins/platforms/cocoa/qiosurfacegraphicsbuffer.h.patch
         # End of applying patches
 
         # Create shadow build folder
