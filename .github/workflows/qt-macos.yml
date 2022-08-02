@@ -16,9 +16,13 @@ jobs:
     - name: Compile static Qt version
       run: |
         # Clone Qt5 repo
+        pwd
+        ls -la
         cd ..
         git clone https://code.qt.io/qt/qt5.git -b 5.15.2
         cd qt5
+        pwd
+        cat ../mac/patch/qtbase/src/plugins/platforms/cocoa/qiosurfacegraphicsbuffer.h.patch
         perl init-repository -f --module-subset=qt3d,qtbase,qtcanvas3d,qtcharts,qtdeclarative,qtgraphicaleffects,qtimageformats,qtmultimedia,qtnetworkauth,qtquick3d,qtquickcontrols,qtquickcontrols2,qtserialbus,qtserialport,qtsvg,qtwebchannel,qtwebengine,qtwebsockets,qtwebview,qtwinextras,qtxmlpatterns
 
         # Apply patches
