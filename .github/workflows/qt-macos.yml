@@ -16,7 +16,6 @@ jobs:
     - name: Compile static Qt version
       run: |
         # Clone Qt5 repo
-        7z h
         cd ..
         git clone https://code.qt.io/qt/qt5.git -b 5.15.2
         cd qt5
@@ -38,8 +37,8 @@ jobs:
     - name: Package binaries
       run: |
         # Create archive of the pre-built Qt binaries
-        tar cfvz qt5_5152_static_binaries_macos.tar.gz ../Qt5_binaries
+        7z a qt5_5152_static_binaries_macos.7z ../Qt5_binaries
     - uses: actions/upload-artifact@v1
       with:
         name: qt5_5152_static_binaries_macos
-        path: qt5_5152_static_binaries_macos.tar.gz
+        path: qt5_5152_static_binaries_macos.7z
